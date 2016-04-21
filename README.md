@@ -1,0 +1,1 @@
+# docker-sbt-node-mongo
