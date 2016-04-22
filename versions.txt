@@ -1,0 +1,2 @@
+sbt     mongo   node
+0.13.9  3.2.1   4.x

@@ -1,0 +1,28 @@
+dependencies:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - sudo service docker start
+  override:
+    - >
+      ./do_for_versions.bash '
+        docker build 
+          --build-arg "VERSION_SBT=$VERSION_SBT" 
+          --build-arg "VERSION_MONGO=$VERSION_MONGO" 
+          --build-arg "VERSION_NODE=$VERSION_NODE" 
+          -t "scalableminds/sbt:$VERSION_TAG" .
+      '
+test:
+  override:
+    - >
+      set -e; 
+      ./do_for_versions.bash '
+        docker run --entrypoint=bash "scalableminds/sbt:$VERSION_TAG" which sbt mongo nodejs
+      '
+
+deployment:
+  hub:
+    branch: /.*/
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push scalableminds/sbt:$CIRCLE_BUILD_NUM
+      - docker logout
