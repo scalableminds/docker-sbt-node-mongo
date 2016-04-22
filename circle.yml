@@ -23,6 +23,6 @@ deployment:
   hub:
     branch: /.*/
     commands:
-      - docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - ./do_for_versions.bash 'docker push scalableminds/sbt:$VERSION_TAG'
       - docker logout
