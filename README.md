@@ -29,6 +29,8 @@ The default entrypoint is sbt itself, so you can directly append any sbt command
 
 - `sbt-0.13.9_mongo-3.2.1_node-4.x_jdk-8`
 
+See also [here](https://hub.docker.com/r/scalableminds/sbt/tags/).
+
 # Builds
 
-The Docker images are built by [CircleCI]](https://circleci.com/gh/scalableminds/docker-sbt-node-mongo)
+The Docker images are built by [CircleCI](https://circleci.com/gh/scalableminds/docker-sbt-node-mongo).
