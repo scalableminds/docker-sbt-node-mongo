@@ -33,6 +33,7 @@ COPY init.d/xvfb /etc/init.d/xvfb
 COPY entrypoint.sh /entrypoint.sh
 RUN \
   mkdir -p /project \
-  && chmod +x /entrypoint.sh
+  && chmod +x /entrypoint.sh \
+  && chmod +x /etc/init.d/xvfb
 WORKDIR /project
 ENTRYPOINT [ "/entrypoint.sh" ]
