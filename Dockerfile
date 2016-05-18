@@ -30,7 +30,9 @@ COPY init.d/xvfb /etc/init.d/xvfb
 
 
 # Mount your sbt project at /project
-RUN mkdir -p /project
-WORKDIR /project
 COPY entrypoint.sh /entrypoint.sh
+RUN \
+  mkdir -p /project \
+  && chmod +x /entrypoint.sh
+WORKDIR /project
 ENTRYPOINT [ "/entrypoint.sh" ]

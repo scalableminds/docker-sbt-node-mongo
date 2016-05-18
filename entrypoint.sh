@@ -5,4 +5,4 @@ if [ "$1" = 'sbt' ] || [ "$1" = 'bash' ] || [ "$1" = 'sh' ]; then
     exec "$@"
 fi
 
-exec "sbt $@"
+exec sbt "$@"
