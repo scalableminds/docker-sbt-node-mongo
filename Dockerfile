@@ -1,11 +1,12 @@
 FROM java:8-jdk
 
+
 ARG VERSION_SBT="0.13.9"
 ARG VERSION_MONGO="3.2.1"
 ARG VERSION_NODE="4.x"
 
 
-# Install sbt, mongo, node, iceweasel & build-essentials
+# Install sbt, mongo, node, chromium & build-essentials
 RUN \
   VERSION_MONGO_SHORT=$(echo "$VERSION_MONGO" | cut -f1-2 -d".") \
   && wget -q "https://dl.bintray.com/sbt/debian/sbt-${VERSION_SBT}.deb" \
@@ -18,14 +19,16 @@ RUN \
   && apt-get update \
   && apt-get install -y \
       build-essential \
-      iceweasel \
+      chromium \
       mongodb-org-shell="${VERSION_MONGO}" \
       mongodb-org-tools="${VERSION_MONGO}" \
       nodejs \
       xvfb \
-  && apt-get clean
+  && apt-get clean \
+  && ln -s /usr/bin/chromium /usr/bin/google-chrome
 
 
+# Init-Script for xvfb
 COPY init.d/xvfb /etc/init.d/xvfb
 
 
