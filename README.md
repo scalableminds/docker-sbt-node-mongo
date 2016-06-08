@@ -37,8 +37,20 @@ This will mount your project to `/project` inside the container, which is the co
 It is possible to handle the volumes via [docker-compose](https://docs.docker.com/compose), so running your project inside docker becomes:
 
 ```
- docker-compose run sbt clean compile
+ export VERSION_TAG=sbt-0.13.9_mongo-3.2.1_node-4.x_jdk-8
+ docker-compose run example
 ```
+
+You can also use the normal sbt commands or link other containers:
+
+```
+ export VERSION_TAG=sbt-0.13.9_mongo-3.2.1_node-4.x_jdk-8
+ docker-compose run example-sbt         # interactive sbt console
+ docker-compose run example-sbt compile
+ docker-compose run example-mongo       # connecting to another mongo container
+```
+
+For more details, see the [example docker-compose file](docker-compose.yml).
 
 # Supported tags
 
