@@ -41,12 +41,15 @@ It is possible to handle the volumes via [docker-compose](https://docs.docker.co
  docker-compose run example
 ```
 
-You can also use the normal sbt commands or link other containers:
+You can also use the normal sbt commands, specify bash commands or link other containers:
 
 ```
  export VERSION_TAG=sbt-0.13.9_mongo-3.2.1_node-4.x_jdk-8
  docker-compose run example-sbt         # interactive sbt console
+ docker-compose run example sbt         # same as above
  docker-compose run example-sbt compile
+ docker-compose run example sbt compile # same as above
+ docker-compose run example bash -c top
  docker-compose run example-mongo       # connecting to another mongo container
 ```
 

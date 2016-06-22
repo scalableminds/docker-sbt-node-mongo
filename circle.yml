@@ -22,7 +22,7 @@ test:
         docker run "scalableminds/sbt:$VERSION_TAG" bash -c "which sbt mongo nodejs";
         export VERSION_TAG=$VERSION_TAG;
         docker-compose run example | grep "It works™";
-        docker-compose run example-mongo test
+        echo "show dbs" | docker-compose run example-mongo
       '
 
 deployment:

@@ -15,15 +15,10 @@ services:
       service: example-sbt
     command: run
 
-  example-top:
-    extends:
-      service: example-sbt
-    command: bash -c "top"
-
   example-mongo:
     extends:
       service: example-sbt
-    command: bash -c "mongo mongo:27017"
+    entrypoint: mongo mongo:27017
     links:
       - mongo
 
