@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+
+  example-sbt:
+    image: scalableminds/sbt:$VERSION_TAG
+    volumes:
+      - "./example-project:/project"
+      - "~/.sbt:/root/.sbt"
+      - "~/.m2:/root/.m2"
+      - "~/.ivy2:/root/.ivy2"
+
+  example:
+    extends:
+      service: example-sbt
+    command: run
+
+  example-mongo:
+    extends:
+      service: example-sbt
+    entrypoint: mongo mongo:27017
+    links:
+      - mongo
+
+  mongo:
+    image: mongo

@@ -1,6 +1,9 @@
 dependencies:
   pre:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > docker-compose
+    - sudo mv docker-compose /usr/local/bin/docker-compose
+    - sudo chmod +x /usr/local/bin/docker-compose
     - sudo service docker start
   override:
     - >
@@ -16,12 +19,15 @@ test:
     - >
       set -e; 
       ./do_for_versions.bash '
-        docker run "scalableminds/sbt:$VERSION_TAG" bash -c "which sbt mongo nodejs"
+        docker run "scalableminds/sbt:$VERSION_TAG" bash -c "which sbt mongo nodejs";
+        export VERSION_TAG=$VERSION_TAG;
+        docker-compose run example | grep "It works™";
+        echo "show dbs" | docker-compose run example-mongo
       '
 
 deployment:
   hub:
-    branch: /.*/
+    branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - ./do_for_versions.bash 'docker push scalableminds/sbt:$VERSION_TAG'
