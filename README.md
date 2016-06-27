@@ -64,3 +64,7 @@ See also [here](https://hub.docker.com/r/scalableminds/sbt/tags/).
 # Builds
 
 The Docker images are built by [CircleCI](https://circleci.com/gh/scalableminds/docker-sbt-node-mongo).
+
+# License
+
+[MIT 2016 scalable minds](LICENCE.txt)
