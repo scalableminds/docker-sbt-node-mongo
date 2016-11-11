@@ -20,6 +20,7 @@ RUN \
   && apt-get install -y \
       build-essential \
       chromium \
+      iceweasel \
       mongodb-org-shell="${VERSION_MONGO}" \
       mongodb-org-tools="${VERSION_MONGO}" \
       nodejs \
