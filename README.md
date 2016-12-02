@@ -67,4 +67,4 @@ The Docker images are built by [CircleCI](https://circleci.com/gh/scalableminds/
 
 # License
 
-[MIT 2016 scalable minds](LICENCE.txt)
+[MIT 2016 scalable minds](LICENSE.txt)
