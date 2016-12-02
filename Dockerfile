@@ -28,6 +28,7 @@ RUN \
   && apt-get clean \
   && ln -s /usr/bin/chromium /usr/bin/google-chrome \
   && npm install -g yarn
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 # Init-Script for xvfb
