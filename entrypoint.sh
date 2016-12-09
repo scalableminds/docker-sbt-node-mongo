@@ -3,6 +3,6 @@ set -e
 
 if [ "$1" = 'sbt' ] || [ "$1" = 'bash' ] || [ "$1" = 'sh' ]; then
     exec "$@"
+else
+    exec sbt "$@"
 fi
-
-exec sbt "$@"
