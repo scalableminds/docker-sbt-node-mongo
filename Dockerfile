@@ -16,6 +16,8 @@ RUN \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 \
   && echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$VERSION_MONGO_SHORT main" | \
       tee /etc/apt/sources.list.d/mongodb-org-3.2.list \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
   && apt-get update \
   && apt-get install -y \
       build-essential \
@@ -25,9 +27,9 @@ RUN \
       mongodb-org-tools="${VERSION_MONGO}" \
       nodejs \
       xvfb \
+      yarn \
   && apt-get clean \
   && ln -s /usr/bin/chromium /usr/bin/google-chrome \
-  && npm install -g yarn \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
