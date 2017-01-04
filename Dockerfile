@@ -18,16 +18,18 @@ RUN \
       tee /etc/apt/sources.list.d/mongodb-org-3.2.list \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
+  && curl -sS https://mozilla.debian.net/archive.asc | apt-key add - \
+  && echo "deb http://mozilla.debian.net/ jessie-backports firefox-release" > /etc/apt/sources.list.d/mozilla.list \
   && apt-get update \
   && apt-get install -y \
       build-essential \
       chromium \
-      iceweasel \
       mongodb-org-shell="${VERSION_MONGO}" \
       mongodb-org-tools="${VERSION_MONGO}" \
       nodejs \
       xvfb \
       yarn \
+  && apt-get install -t jessie-backports firefox \
   && apt-get clean \
   && ln -s /usr/bin/chromium /usr/bin/google-chrome \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
