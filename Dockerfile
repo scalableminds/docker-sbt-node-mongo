@@ -29,7 +29,7 @@ RUN \
       nodejs \
       xvfb \
       yarn \
-  && apt-get install -t jessie-backports firefox \
+  && apt-get install -y -t jessie-backports firefox \
   && apt-get clean \
   && ln -s /usr/bin/chromium /usr/bin/google-chrome \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
