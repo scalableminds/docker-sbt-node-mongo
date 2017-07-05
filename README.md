@@ -57,10 +57,10 @@ For more details, see the [example docker-compose file](docker-compose.yml).
 
 # Supported tags
 
-- `sbt-0.13.9_mongo-3.2.1_node-4.x_jdk-8`
-- `sbt-0.13.9_mongo-3.2.1_node-6.x_jdk-8`
 - `sbt-0.13.9_mongo-3.2.1_node-7.x_jdk-8`
 - `sbt-0.13.9_mongo-3.2.1_node-8.x_jdk-8`
+- `sbt-0.13.15_mongo-3.2.1_node-7.x_jdk-8`
+- `sbt-0.13.15_mongo-3.2.1_node-8.x_jdk-8`
 
 See also [here](https://hub.docker.com/r/scalableminds/sbt/tags/).
 
