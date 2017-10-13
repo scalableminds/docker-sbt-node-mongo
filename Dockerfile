@@ -2,8 +2,11 @@ FROM openjdk:8-jdk
 
 
 ARG VERSION_SBT="0.13.9"
-ARG VERSION_MONGO="3.2.1"
+ARG VERSION_MONGO="3.2.17"
 ARG VERSION_NODE="4.x"
+
+
+ENV DEBIAN_FRONTEND noninteractive
 
 
 # Install sbt, mongo, node, chromium & build-essentials
