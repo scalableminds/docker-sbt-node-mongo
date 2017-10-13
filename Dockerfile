@@ -16,7 +16,7 @@ RUN \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 \
   && echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/$VERSION_MONGO_SHORT main" | \
       tee /etc/apt/sources.list.d/mongodb-org-3.2.list \
-  && LIB_SSL_PACKAGE="libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb"
+  && LIB_SSL_PACKAGE="libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb" \
   && wget -q "http://ftp.de.debian.org/debian/pool/main/o/openssl/$LIB_SSL_PACKAGE" \
   && dpkg -i "$LIB_SSL_PACKAGE" \
   && rm "$LIB_SSL_PACKAGE" \
