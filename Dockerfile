@@ -14,8 +14,12 @@ RUN \
   && rm "sbt-${VERSION_SBT}.deb" \
   && curl -sL "https://deb.nodesource.com/setup_${VERSION_NODE}" | bash - \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 \
-  && echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$VERSION_MONGO_SHORT main" | \
+  && echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/$VERSION_MONGO_SHORT main" | \
       tee /etc/apt/sources.list.d/mongodb-org-3.2.list \
+  && LIB_SSL_PACKAGE="libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb"
+  && wget -q "http://ftp.de.debian.org/debian/pool/main/o/openssl/$LIB_SSL_PACKAGE" \
+  && dpkg -i "$LIB_SSL_PACKAGE" \
+  && rm "$LIB_SSL_PACKAGE" \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
   && apt-get update \
