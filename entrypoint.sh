@@ -23,7 +23,7 @@ if ! getent passwd "${USER_NAME}" >/dev/null; then
 fi
 
 if [ "$1" = 'sbt' ] || [ "$1" = 'bash' ] || [ "$1" = 'sh' ]; then
-    cd "/home/${USER_NAME}"
+    cd $(eval echo "~${USER_NAME}")
     exec sudo -HEu "${USER_NAME}" $@
 else
     su ${USER_NAME}" << EOF
