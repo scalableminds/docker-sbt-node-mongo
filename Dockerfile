@@ -30,6 +30,7 @@ RUN \
       build-essential \
       chromium \
       firefox-esr \
+      gosu \
       mongodb-org-shell="${VERSION_MONGO}" \
       mongodb-org-tools="${VERSION_MONGO}" \
       nodejs \
