@@ -2,7 +2,7 @@
 set -e
 
 USER_UID=${USER_UID:-1000}
-USER_GID=${USER_GID:-1000}
+USER_GID=${USER_GID:-$USER_UID}
 USER_NAME=${USER_NAME:-sbt}
 
 if [[ -d "/home/${USER_NAME}" ]]; then
