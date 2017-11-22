@@ -25,6 +25,13 @@ Besides your project, you might want to mount caches, like
 * `/home/$USER/.sbt`
 * `/usr/local/share/.cache/yarn`
 
+Also, you can specify the user with those environment variables:
+* `USER_UID`
+* `USER_GID`
+* `USER_NAME`
+
+The timezone can be set specifying `TZ`.
+
 # Supported tags
 
 Check which tags are available on [Docker Hub](https://hub.docker.com/r/scalableminds/sbt/tags/). Older tags might behave differently, currently updated versions are specified in the [versions.txt](versions.txt).
