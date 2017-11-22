@@ -55,6 +55,6 @@ RUN \
   mkdir -p /project \
   && chmod +x /entrypoint.sh \
   && chmod +x /etc/init.d/xvfb
-WORKDIR /project
+WORKDIR /
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD ["bash"]

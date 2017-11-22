@@ -16,5 +16,9 @@ if ! getent passwd ${USER_UID} >/dev/null && ! getent passwd ${USER_NAME} >/dev/
     --gecos ${USER_NAME} ${USER_NAME} > /dev/null 2>&1
 fi
 
-cd $(gosu ${USER_NAME} bash -c "echo ~")
+USER_HOME=$(gosu ${USER_NAME} bash -c "echo ~")
+if [ "$(pwd)" == "/" ]; then
+  cd $USER_HOME
+fi
+chown $USER_UID:$USER_GID $USER_HOME
 exec gosu ${USER_NAME} "$@"
