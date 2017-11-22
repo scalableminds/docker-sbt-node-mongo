@@ -6,63 +6,35 @@ The images are available on the [Docker Hub](https://hub.docker.com/r/scalablemi
 
 # Usage
 
-First pull the sbt image with your favorite tag:
+Run the sbt image with your favorite tag:
 
 ```
- docker pull scalableminds/sbt:sbt-0.13.9_mongo-3.2.1_node-8.x_jdk-8
+# gives you a bash:
+docker run scalableminds/sbt:sbt-0.13.15_mongo-3.2.1_node-8.x_jdk-8
+# interactive sbt:
+docker run scalableminds/sbt:sbt-0.13.15_mongo-3.2.1_node-8.x_jdk-8 sbt
+# run a specific command:
+docker run scalableminds/sbt:sbt-0.13.15_mongo-3.2.1_node-8.x_jdk-8 yarn install
 ```
 
-Then run the default `sbt` command like this:
+## Hints:
 
-```
- docker run  \
-   --volume="$HOME/yourproject:/project" \
-   --volume="$HOME/.sbt:/root/.sbt" \
-   --volume="$HOME/.m2:/root/.m2" \
-   --volume="$HOME/.ivy2:/root/.ivy2" \
-   scalableminds/sbt:sbt-0.13.9_mongo-3.2.1_node-8.x_jdk-8
-```
+Besides your project, you might want to mount caches, like
+* `/home/$USER/.m2`
+* `/home/$USER/.ivy2`
+* `/home/$USER/.sbt`
+* `/usr/local/share/.cache/yarn`
 
-This will mount your project to `/project` inside the container, which is the container's working directory. Further, your local sbt, maven, and ivy2 caches are mounted into the container. As the default entrypoint is `sbt`, you can directly append any sbt command like this:
+Also, you can specify the user with those environment variables:
+* `USER_UID`
+* `USER_GID`
+* `USER_NAME`
 
-```
- docker run  \
-   --volume="$HOME/yourproject:/project" \
-   --volume="$HOME/.sbt:/root/.sbt" \
-   --volume="$HOME/.m2:/root/.m2" \
-   --volume="$HOME/.ivy2:/root/.ivy2" \
-   scalableminds/sbt:sbt-0.13.9_mongo-3.2.1_node-8.x_jdk-8 clean compile
-```
-
-It is possible to handle the volumes via [docker-compose](https://docs.docker.com/compose), so running your project inside docker becomes:
-
-```
- export VERSION_TAG=sbt-0.13.9_mongo-3.2.1_node-8.x_jdk-8
- docker-compose run example
-```
-
-You can also use the normal sbt commands, specify bash commands or link other containers:
-
-```
- export VERSION_TAG=sbt-0.13.9_mongo-3.2.1_node-8.x_jdk-8
- docker-compose run example-sbt         # interactive sbt console
- docker-compose run example sbt         # same as above
- docker-compose run example-sbt compile
- docker-compose run example sbt compile # same as above
- docker-compose run example bash -c top
- docker-compose run example-mongo       # connecting to another mongo container
-```
-
-For more details, see the [example docker-compose file](docker-compose.yml).
+The timezone can be set specifying `TZ`.
 
 # Supported tags
 
-- `sbt-0.13.9_mongo-3.2.1_node-7.x_jdk-8`
-- `sbt-0.13.9_mongo-3.2.1_node-8.x_jdk-8`
-- `sbt-0.13.15_mongo-3.2.1_node-7.x_jdk-8`
-- `sbt-0.13.15_mongo-3.2.1_node-8.x_jdk-8`
-
-See also [here](https://hub.docker.com/r/scalableminds/sbt/tags/).
+Check which tags are available on [Docker Hub](https://hub.docker.com/r/scalableminds/sbt/tags/). Older tags might behave differently, currently updated versions are specified in the [versions.txt](versions.txt).
 
 # Builds
 

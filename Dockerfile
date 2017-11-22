@@ -30,6 +30,7 @@ RUN \
       build-essential \
       chromium \
       firefox-esr \
+      gosu \
       mongodb-org-shell="${VERSION_MONGO}" \
       mongodb-org-tools="${VERSION_MONGO}" \
       nodejs \
@@ -54,5 +55,6 @@ RUN \
   mkdir -p /project \
   && chmod +x /entrypoint.sh \
   && chmod +x /etc/init.d/xvfb
-WORKDIR /project
+WORKDIR /
 ENTRYPOINT [ "/entrypoint.sh" ]
+CMD ["bash"]
