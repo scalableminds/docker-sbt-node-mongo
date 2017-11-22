@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -Eeuo pipefail
 
 USER_UID=${USER_UID:-1000}
 USER_GID=${USER_GID:-$USER_UID}
