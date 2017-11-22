@@ -57,3 +57,4 @@ RUN \
   && chmod +x /etc/init.d/xvfb
 WORKDIR /project
 ENTRYPOINT [ "/entrypoint.sh" ]
+CMD ["bash"]
