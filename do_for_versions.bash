@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
 
 tail -n +2 versions.txt | while read line; do
     VERSION_SBT=$(echo $line | awk '{printf $1}');
