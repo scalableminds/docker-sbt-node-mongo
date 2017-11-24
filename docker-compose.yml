@@ -13,7 +13,7 @@ services:
   example:
     extends:
       service: example-sbt
-    command: run
+    command: sbt run
 
   example-mongo:
     extends:
