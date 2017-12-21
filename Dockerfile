@@ -1,7 +1,5 @@
 FROM openjdk:8-jdk
 
-SHELL [ "/bin/bash", "-c" ]
-
 ARG VERSION_SBT="0.13.15"
 ARG VERSION_MONGO="3.2.17"
 ARG VERSION_NODE="8.x"
