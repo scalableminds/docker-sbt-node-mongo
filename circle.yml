@@ -16,7 +16,7 @@ test:
     - >
       set -e; 
       ./do_for_versions.bash '
-        docker run "scalableminds/sbt:$VERSION_TAG" bash -c "which sbt mongo nodejs firefox"
+        docker run "scalableminds/sbt:$VERSION_TAG" bash -c "which sbt mongo nodejs"
       '
 
 deployment:
