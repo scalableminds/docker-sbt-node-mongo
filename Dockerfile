@@ -33,6 +33,7 @@ RUN \
       nodejs \
       postgresql-client \
       yarn \
+      pkg-config \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
