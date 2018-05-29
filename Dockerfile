@@ -33,7 +33,9 @@ RUN \
       nodejs \
       postgresql-client \
       yarn \
-      pkg-config mesa-utils xvfb libgl1-mesa-dri libglapi-mesa libosmesa6 pkg-config x11proto-xext-dev xserver-xorg-dev libxext-dev libxi-dev \
+  # The following packages are necessary to run headless-gl
+  && apt-get install -y \
+      mesa-utils xvfb libgl1-mesa-dri libglapi-mesa libosmesa6 pkg-config x11proto-xext-dev xserver-xorg-dev libxext-dev libxi-dev
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
